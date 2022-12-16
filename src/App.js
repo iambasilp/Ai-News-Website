@@ -1,25 +1,27 @@
 import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
+import alanBtn from '@alan-ai/alan-sdk-web';
 
+
+const alanKey = 'db8beed7319cd2dbb9ac8b5554bf91ee2e956eca572e1d8b807a3e2338fdd0dc/stage';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    useEffect(() => {
+        // only run one times in class component componentDidMount()
+        alanBtn({
+            key: alanKey,
+            onCommand: ({ command }) => {
+                if (command === 'textCommand') {
+                    alert("helo iam basil pulikuth");
+                }
+            }
+        })
+    }, [])
+    return (
+        <div>
+            <h1>Basil Voice Ai</h1>
+        </div>
+    );
 }
 
 export default App;
