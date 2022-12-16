@@ -8,7 +8,8 @@ html {
 }
 body {
   margin: 0;
-  background-color: whitesmoke;
+  font-family: sans-serif;
+  background-color: white;
 }
 
 code {

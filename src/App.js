@@ -22,7 +22,7 @@ const App = () => {
 
     return (
         <div>
-            <h1>Alan Ai website</h1>
+            <h1 style={{textAlign:"center",marginTop:"1rem",color:"rgba(0,0,0,0.8)"}}>Basil Ai Website</h1>
             <NewsCards articles={newsArticles} />
         </div>
     );
