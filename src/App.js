@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import { useEffect } from 'react';
-import './App.css';
+import React, {useEffect, useState} from 'react'
 import alanBtn from '@alan-ai/alan-sdk-web';
+
+import NewsCards from './components/NewsCards/NewsCards'
+
 
 
 const alanKey = 'db8beed7319cd2dbb9ac8b5554bf91ee2e956eca572e1d8b807a3e2338fdd0dc/stage';
-function App() {
+const App = () => {
+    const [newsArticles, setNewsArticles] = useState([])
     useEffect(() => {
-        // only run one times in class component componentDidMount()
         alanBtn({
             key: alanKey,
-            onCommand: ({ command }) => {
-                if (command === 'textCommand') {
-                    alert("helo iam basil pulikuth");
+            onCommand: ({command, articles}) => {
+                if (command === 'newHeadlines') {
+                    console.log(articles)
+                    setNewsArticles(articles)
                 }
             }
         })
     }, [])
+
     return (
         <div>
-            <h1>Basil Voice Ai</h1>
+            <h1>Alan Ai website</h1>
+            <NewsCards articles={newsArticles} />
         </div>
     );
 }
